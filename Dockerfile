@@ -4,7 +4,7 @@ WORKDIR /usr/src/myapp
 
 COPY composer.* .
 ARG IMPLEMENTATION_VERSION
-RUN if [ -n "$IMPLEMENTATION_VERSION" ]; then composer require "opis/json-schema:$IMPLEMENTATION_VERSION" --no-dev --no-scripts --no-interaction --prefer-dist --optimize-autoloader; else composer install --no-dev --no-scripts --no-interaction --prefer-dist --optimize-autoloader; fi
+RUN if [ -n "$IMPLEMENTATION_VERSION" ]; then composer require "opis/json-schema:$IMPLEMENTATION_VERSION" --update-no-dev --no-scripts --no-interaction --prefer-dist --optimize-autoloader; else composer install --no-dev --no-scripts --no-interaction --prefer-dist --optimize-autoloader; fi
 COPY bowtieJsonSchema.php .
 RUN composer dump-autoload --no-dev --optimize --classmap-authoritative
 
