@@ -8,7 +8,7 @@ RUN if [ -n "$IMPLEMENTATION_VERSION" ]; then composer require "opis/json-schema
 COPY bowtieJsonSchema.php .
 RUN composer dump-autoload --no-dev --optimize --classmap-authoritative
 
-FROM php:8.6.0beta1-fpm-alpine
+FROM php:8.6.0beta2-fpm-alpine
 
 WORKDIR /usr/src/myapp
 
