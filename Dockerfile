@@ -1,4 +1,4 @@
-FROM composer:2.10.2 AS builder
+FROM composer:2.10.3 AS builder
 
 WORKDIR /usr/src/myapp
 
