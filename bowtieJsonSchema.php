@@ -69,6 +69,21 @@ function run($request)
 {
     assert($GLOBALS['STARTED'], 'Not started!');
 
+    $output = $request->output ?? 'flag';
+    if ($output !== 'flag') {
+        return [
+            'seq' => $request->seq,
+            'results' => array_fill(
+                0,
+                count($request->case->tests),
+                [
+                    'skipped' => true,
+                    'message' => sprintf('Unsupported output format: %s', $output),
+                ]
+            ),
+        ];
+    }
+
     $validator = new Validator();
     if (isset($request->case->registry)) {
         $resolver = $validator->loader()->resolver();
